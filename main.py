@@ -26,6 +26,7 @@ model = fasttext.load_model(PRETRAINED_MODEL_PATH)
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '9321d167db0ab08ddaedbee0c45ebeba'
 
+@app.route('/',methods=['POST','GET'])
 @app.route('/home',methods=['POST','GET'])
 def home():
     form = Languageinput()
@@ -42,7 +43,7 @@ def home():
         lang_name_full = detect_language_from_code(lang_code)
         print(lang_name_full)
         flash(f'Language code: {lang_code}      |      Confidence: {confidence}      |      Language Full name: {lang_name_full}','success')
-        return redirect(url_for('home'))
+        return render_template('home.html', form = form)
 
     return render_template('home.html',form=form)
 
@@ -94,3 +95,4 @@ if __name__ == '__main__':
     # host='0.0.0.0', debug=True, port=50500
     # href = "{{ }}"
 
+# todo make it so that when you input text in the browser and enter that the text doesn't go away
