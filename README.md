@@ -54,19 +54,25 @@ result.json()
 ```
 
 # To access via Docker
+You can build a docker image with the dockerfile after cloneing the repo. Like this
+```
+docker build Language_detection -t nameofyourcontainer
+```
+Then run the container and bind the port 5000 of the container to any port of your machine if you wish to access it locally.
+Run the container like this
 
-
+```
+docker run -it -p 5000:5000 nameofyourcontainer
+```
+This will run the container in attached mode, if you wish to run deattached, just remove the `-it` flags from the command.
 ## Contributing
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-## History
-TODO: 
-## Credits
-TODO: 
-## License
-TODO: 
 
+ 
+## License
+MIT License
 
